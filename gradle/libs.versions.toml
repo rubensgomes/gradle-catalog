@@ -1,0 +1,78 @@
+[versions]
+bcprov-jdk18on = "1.80"
+commons-configuration2 = "2.11.0"
+commons-validator = "1.9.0"
+device-detector = "1.0.10"
+displaytag = "3.1.0"
+expressly = "5.0.0"
+ex-lib = "0.0.9"
+foojay = "0.8.0"
+hibernate-validator = "8.0.2.Final"
+kotlin = "2.1.20"
+jackson = "2.18.3"
+jakarta-validation-api = "3.1.1"
+jasypt-hibernate5 = "1.9.3"
+jsonschema2pojo = "1.2.2"
+junit = "5.12.1"
+junit-platform-launcher = "1.12.1"
+logback = "1.5.6"
+logbackext-lib = "0.0.3"
+mockk = "1.13.17"
+ms-framework-lib = "0.0.9"
+oro = "2.0.8"
+release = "3.0.2"
+reqresp-lib = "0.0.4"
+slf4j-api = "2.0.17"
+spotless = "7.0.2"
+spring-boot = "3.4.4"
+spring-dependency-management = "1.1.7"
+springmockk = "4.0.2"
+struts2 = "7.0.3"
+taglibs-datetime = "1.0.1"
+taglibs-string = "1.1.0"
+
+[libraries]
+bcprov-jdk18on = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bcprov-jdk18on" }
+commons-configuration2 = { module = "org.apache.commons:commons-configuration2", version.ref = "commons-configuration2" }
+commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
+device-detector = { module = "io.github.mngsk:device-detector", version.ref = "device-detector" }
+displaytag = { module = "com.github.hazendaz:displaytag", version.ref = "displaytag" }
+ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
+expressly = { module = "org.glassfish.expressly:expressly", version.ref = "expressly" }
+hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
+jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
+ms-framework-lib = { module = "com.rubensgomes:ms-framework-lib", version.ref = "ms-framework-lib" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+oro = { module = "oro:oro", version.ref = "oro" }
+reqresp-lib = { module = "com.rubensgomes:reqresp-lib", version.ref = "reqresp-lib" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
+springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
+taglibs-datetime = { module = "taglibs:datetime", version.ref = "taglibs-datetime" }
+taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
+
+[bundles]
+jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
+kotlin-junit5 = ["mockk", "kotlin-test-junit5", "junit-jupiter-engine"]
+logback = ["logback-classic", "logback-core"]
+logbackext = ["logback-classic", "logback-core", "logbackext-lib"]
+
+[plugins]
+fooja = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
+jsonschema2pojo = { id = "org.jsonschema2pojo", version.ref = "jsonschema2pojo" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+release = { id = "net.researchgate.release", version.ref = "release" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
