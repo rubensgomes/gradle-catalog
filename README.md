@@ -85,6 +85,12 @@ on the `New branch` button.
 ./gradlew -q javaToolchains
 ```
 
+### Update the gradlew wrapper version
+
+```shell
+./gradlew wrapper --gradle-version=8.14.1 --distribution-type=bin
+```
+
 ### Clean, Build, Publish, Release
 
 ```shell
