@@ -28,6 +28,7 @@ spring-boot = "3.5.0"
 spring-dependency-management = "1.1.7"
 springmockk = "4.0.2"
 struts2 = "7.0.3"
+swagger-annotations = "2.2.31"
 taglibs-datetime = "1.0.1"
 taglibs-string = "1.1.0"
 
@@ -58,6 +59,7 @@ oro = { module = "oro:oro", version.ref = "oro" }
 reqresp-lib = { module = "com.rubensgomes:reqresp-lib", version.ref = "reqresp-lib" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
+swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
 taglibs-datetime = { module = "taglibs:datetime", version.ref = "taglibs-datetime" }
 taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
 
