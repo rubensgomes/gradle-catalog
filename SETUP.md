@@ -63,3 +63,7 @@ the `release` branch from main.
    dockerUsername=rubensgomes
    dockerPassword=***
    ```
+
+## Private Maven `repsy.io` Repo
+
+- Have an account setup at [repsy.io](https://repsy.io/mvn/rubensgomes)
