@@ -17,11 +17,21 @@ project.group = group
 project.version = version
 project.description = description
 
+// ----------------------------------------------------------------------------
+// --------------- >>> Gradle Version Catalog Plugin <<< ----------------------
+// ----------------------------------------------------------------------------
+// https://docs.gradle.org/current/userguide/version_catalogs.html
+
 catalog {
     versionCatalog {
         from(files("gradle/libs.versions.toml"))
     }
 }
+
+// ----------------------------------------------------------------------------
+// --------------- >>> Gradle Maven Publish Plugin <<< ------------------------
+// ----------------------------------------------------------------------------
+// https://docs.gradle.org/current/userguide/publishing_maven.html
 
 publishing {
 
@@ -85,7 +95,11 @@ publishing {
     }
 }
 
-// "net.researchgate.release" configuration
+// ----------------------------------------------------------------------------
+// --------------- >>> net.researchgate.release Plugin <<< --------------------
+// ----------------------------------------------------------------------------
+// https://github.com/researchgate/gradle-release
+
 release {
     with(git) {
         pushReleaseVersionBranch.set("release")
@@ -93,7 +107,6 @@ release {
     }
 }
 
-// "net.researchgate.release" configuration
 tasks.afterReleaseBuild {
     dependsOn("publish")
 }
