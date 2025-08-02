@@ -48,11 +48,13 @@ git push
 ```
 
 ```shell
-./gradlew --info publish
+./gradlew --info release
 ```
 
 ```shell
-./gradlew --info release
+git checkout release
+./gradlew --info publish
+git checkout main
 ```
 
 ### Usage: Gradle Kotlin DSL
