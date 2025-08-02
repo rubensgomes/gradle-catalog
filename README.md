@@ -29,7 +29,7 @@ The project is planned to be built using an automated CircleCI build pipeline.
 ### Update the gradlew wrapper version
 
 ```shell
-./gradlew wrapper --gradle-version=8.14.1 --distribution-type=bin
+./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin
 ```
 
 ### Clean, Build, Publish, Release

@@ -34,6 +34,7 @@ struts2 = "7.0.3"
 swagger-annotations = "2.2.31"
 taglibs-datetime = "1.0.1"
 taglibs-string = "1.1.0"
+task-tree = "4.0.1"
 
 [libraries]
 bcprov-jdk18on = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bcprov-jdk18on" }
@@ -84,3 +85,4 @@ sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+task-tree = { id = "com.dorongold.task-tree", version.ref = "task-tree" }
