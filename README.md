@@ -35,12 +35,12 @@ The project is planned to be built using an automated CircleCI build pipeline.
 ### Clean, Build, Publish, Release
 
 ```shell
-./gradlew --info clean
+git commit -m "updated gradle-catalog" -a
+git push
 ```
 
 ```shell
-git commit -m "updated gradle-catalog" -a
-git push
+./gradlew --info clean
 ```
 
 ```shell
