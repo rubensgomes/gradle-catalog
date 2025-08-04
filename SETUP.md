@@ -15,11 +15,12 @@ This file describes high-level setup instructions to create a software developme
 ### Import Local Repo to GitHub
 
 ```shell
+PROJ_NAME=gradle-catalog
 git init -b main
 git add .
 git commit -m "initial commit" -a
-gh repo create --homepage "https://github.com/rubensgomes" --public <proj-name>
-git remote add origin https://github.com/rubensgomes/<proj-name>
+gh repo create --homepage "https://github.com/rubensgomes" --public "${PROJ_NAME}"
+git remote add origin "https://github.com/rubensgomes/${PROJ_NAME}"
 git push -u origin main
 ```
 
