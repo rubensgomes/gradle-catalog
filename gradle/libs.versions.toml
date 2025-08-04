@@ -12,6 +12,7 @@ kotlin = "2.1.20"
 jackson = "2.19.1"
 jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
+jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
 junit = "5.13.1"
 junit-platform-launcher = "1.13.1"
@@ -49,6 +50,9 @@ jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", ver
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
 jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
