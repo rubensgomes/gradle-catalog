@@ -7,6 +7,7 @@ displaytag = "3.1.0"
 ex-lib = "1.0.0"
 foojay = "1.0.0"
 kotlin = "2.2.20-Beta2"
+kotlin-logging-jvm = "7.0.11"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
@@ -38,6 +39,7 @@ jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "ja
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
+kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging-jvm" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 oro = { module = "oro:oro", version.ref = "oro" }
