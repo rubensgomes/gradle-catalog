@@ -4,20 +4,12 @@ commons-configuration2 = "2.12.0"
 commons-validator = "1.9.0"
 device-detector = "1.0.10"
 displaytag = "3.1.0"
-# expressly is required in the jakarta-bean-validator bundle.
-expressly = "5.0.0"
 ex-lib = "1.0.0"
 foojay = "1.0.0"
-# hibernate-validator is required in the jakarta-bean-validator bundle.
-hibernate-validator = "8.0.2.Final"
 kotlin = "2.2.20-Beta2"
-# akarta-validation-api is required in the jakarta-bean-validator bundle.
-jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
-# logback is required in the logback bundle.
-logback = "1.5.18"
 logbackext-lib = "1.0.1"
 mockk = "1.14.2"
 oro = "2.0.8"
@@ -42,20 +34,10 @@ commons-validator = { module = "commons-validator:commons-validator", version.re
 device-detector = { module = "io.github.mngsk:device-detector", version.ref = "device-detector" }
 displaytag = { module = "com.github.hazendaz:displaytag", version.ref = "displaytag" }
 ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
-# expressly is required in the jakarta-bean-validator bundle.
-expressly = { module = "org.glassfish.expressly:expressly", version.ref = "expressly" }
-# hibernate-validator is required in the jakarta-bean-validator bundle.
-hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
-# jakarta-validator-api is required in the jakarta-bean-validator bundle.
-jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
 jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
-# logback-classic is required in the logback bundle.
-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-# logback-core is required in the logback bundle.
-logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 oro = { module = "oro:oro", version.ref = "oro" }
@@ -65,11 +47,6 @@ springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmoc
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
 taglibs-datetime = { module = "taglibs:datetime", version.ref = "taglibs-datetime" }
 taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
-
-[bundles]
-jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
-logback = ["logback-classic", "logback-core"]
-logbackext = ["logback-classic", "logback-core", "logbackext-lib"]
 
 [plugins]
 fooja = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
