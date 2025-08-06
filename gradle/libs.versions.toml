@@ -4,27 +4,25 @@ commons-configuration2 = "2.12.0"
 commons-validator = "1.9.0"
 device-detector = "1.0.10"
 displaytag = "3.1.0"
+# expressly is required in the jakarta-bean-validator bundle.
 expressly = "5.0.0"
 ex-lib = "1.0.0"
 foojay = "1.0.0"
+# hibernate-validator is required in the jakarta-bean-validator bundle.
 hibernate-validator = "8.0.2.Final"
-kotlin = "2.1.20"
-jackson = "2.19.1"
+kotlin = "2.2.20-Beta2"
+# akarta-validation-api is required in the jakarta-bean-validator bundle.
 jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
-junit = "5.13.1"
-junit-platform-launcher = "1.13.1"
+# logback is required in the logback bundle.
 logback = "1.5.18"
 logbackext-lib = "1.0.1"
-lombok = "8.14"
 mockk = "1.14.2"
-ms-framework-lib = "0.0.9"
 oro = "2.0.8"
 release = "3.1.0"
 reqresp-lib = "0.0.4"
-slf4j-api = "2.0.17"
 sonarqube = "6.2.0.5505"
 spotless = "7.2.1"
 spring-boot = "3.5.4"
@@ -44,28 +42,24 @@ commons-validator = { module = "commons-validator:commons-validator", version.re
 device-detector = { module = "io.github.mngsk:device-detector", version.ref = "device-detector" }
 displaytag = { module = "com.github.hazendaz:displaytag", version.ref = "displaytag" }
 ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
+# expressly is required in the jakarta-bean-validator bundle.
 expressly = { module = "org.glassfish.expressly:expressly", version.ref = "expressly" }
+# hibernate-validator is required in the jakarta-bean-validator bundle.
 hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
-jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+# jakarta-validator-api is required in the jakarta-bean-validator bundle.
 jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
 jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+# logback-classic is required in the logback bundle.
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+# logback-core is required in the logback bundle.
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
-ms-framework-lib = { module = "com.rubensgomes:ms-framework-lib", version.ref = "ms-framework-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 oro = { module = "oro:oro", version.ref = "oro" }
 reqresp-lib = { module = "com.rubensgomes:reqresp-lib", version.ref = "reqresp-lib" }
-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
 springdoc-openapi-starter-webmvc-ui = {module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi"}
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
@@ -74,7 +68,6 @@ taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
 
 [bundles]
 jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
-kotlin-junit5 = ["mockk", "kotlin-test-junit5", "junit-jupiter-engine"]
 logback = ["logback-classic", "logback-core"]
 logbackext = ["logback-classic", "logback-core", "logbackext-lib"]
 
@@ -83,7 +76,6 @@ fooja = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref =
 jsonschema2pojo = { id = "org.jsonschema2pojo", version.ref = "jsonschema2pojo" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
-lombok = { id = "io.freefair.lombok", version.ref = "lombok" }
 release = { id = "net.researchgate.release", version.ref = "release" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
