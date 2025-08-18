@@ -53,6 +53,7 @@ git push
 
 ```shell
 git checkout release
+git pull
 ./gradlew --info publish
 git checkout main
 ```
