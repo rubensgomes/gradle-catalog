@@ -17,6 +17,7 @@ jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
 junit = "5.13.4"
 junit-platform-launcher = "1.13.4"
+logback = "1.5.18"
 logbackext-lib = "1.0.1"
 lombok = "8.10.2"
 mockk = "1.14.2"
@@ -55,6 +56,8 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
 kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging-jvm" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 oro = { module = "oro:oro", version.ref = "oro" }
@@ -69,6 +72,7 @@ taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
 [bundles]
 jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
 junit-jupiter = ["junit-jupiter-api", "junit-jupiter-engine"]
+logback = ["logback-classic", "logback-core"]
 
 [plugins]
 fooja = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
