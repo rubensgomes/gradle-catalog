@@ -15,6 +15,8 @@ jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
+junit = "5.13.4"
+junit-platform-launcher = "1.13.4"
 logbackext-lib = "1.0.1"
 lombok = "8.10.2"
 mockk = "1.14.2"
@@ -48,6 +50,9 @@ jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "ja
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
 kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging-jvm" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
