@@ -8,6 +8,8 @@ ex-lib = "1.0.0"
 foojay = "1.0.0"
 kotlin = "2.2.20-Beta2"
 kotlin-logging-jvm = "7.0.11"
+jackson = "2.19.2"
+jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
 jsonschema2pojo = "1.2.2"
@@ -35,6 +37,8 @@ commons-validator = { module = "commons-validator:commons-validator", version.re
 device-detector = { module = "io.github.mngsk:device-detector", version.ref = "device-detector" }
 displaytag = { module = "com.github.hazendaz:displaytag", version.ref = "displaytag" }
 ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
 jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
