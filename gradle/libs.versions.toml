@@ -72,6 +72,7 @@ taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
 
 [bundles]
 jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
+junit-jupiter = ["junit-jupiter-api", "junit-jupiter-engine"]
 kotlin-junit5 = ["mockk", "kotlin-test-junit5", "junit-jupiter-engine"]
 logback = ["logback-classic", "logback-core"]
 
