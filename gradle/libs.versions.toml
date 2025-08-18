@@ -22,7 +22,8 @@ lombok = "8.10.2"
 mockk = "1.14.2"
 oro = "2.0.8"
 release = "3.1.0"
-reqresp-lib = "0.0.4"
+reqresp-lib = "1.0.7"
+slf4j-api = "2.0.17"
 sonarqube = "6.2.0.5505"
 spotless = "7.2.1"
 spring-boot = "3.5.4"
@@ -58,6 +59,7 @@ logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "log
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 oro = { module = "oro:oro", version.ref = "oro" }
 reqresp-lib = { module = "com.rubensgomes:reqresp-lib", version.ref = "reqresp-lib" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
 springdoc-openapi-starter-webmvc-ui = {module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi"}
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
