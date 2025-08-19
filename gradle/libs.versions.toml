@@ -11,6 +11,7 @@ hibernate-validator = "9.0.1.Final"
 kotlin = "2.2.10"
 kotlin-logging-jvm = "7.0.11"
 jackson = "2.19.2"
+jakarta-annotation-api = "3.0.0"
 jakarta-validation-api = "3.1.1"
 jasypt-hibernate5 = "1.9.3"
 jjwt = "0.12.6"
@@ -47,6 +48,7 @@ ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
 expressly = { module = "org.glassfish.expressly:expressly", version.ref = "expressly" }
 hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jakarta-annotation-api = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotation-api" }
 jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api" }
 jasypt-hibernate5 = { module = "org.jasypt:jasypt-hibernate5", version.ref = "jasypt-hibernate5" }
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
