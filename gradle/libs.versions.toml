@@ -4,7 +4,6 @@ commons-configuration2 = "2.12.0"
 commons-validator = "1.9.0"
 device-detector = "1.0.10"
 displaytag = "3.1.0"
-ex-lib = "1.0.0"
 expressly = "6.0.0"
 foojay = "1.0.0"
 hibernate-validator = "9.0.1.Final"
@@ -22,9 +21,10 @@ logback = "1.5.18"
 logbackext-lib = "1.0.7"
 lombok = "8.10.2"
 mockk = "1.14.5"
+ms-ex-lib = "0.0.3"
+ms-reqresp-lib = "0.0.2"
 oro = "2.0.8"
 release = "3.1.0"
-reqresp-lib = "1.0.11"
 slf4j-api = "2.0.17"
 sonarqube = "6.2.0.5505"
 spotless = "7.2.1"
@@ -44,7 +44,6 @@ commons-configuration2 = { module = "org.apache.commons:commons-configuration2",
 commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
 device-detector = { module = "io.github.mngsk:device-detector", version.ref = "device-detector" }
 displaytag = { module = "com.github.hazendaz:displaytag", version.ref = "displaytag" }
-ex-lib = { module = "com.rubensgomes:ex-lib", version.ref = "ex-lib" }
 expressly = { module = "org.glassfish.expressly:expressly", version.ref = "expressly" }
 hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
@@ -63,8 +62,9 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "lo
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+ms-ex-lib = { module = "com.rubensgomes:ms-ex-lib", version.ref = "ms-ex-lib" }
+ms-reqresp-lib = { module = "com.rubensgomes:ms-reqresp-lib", version.ref = "ms-reqresp-lib" }
 oro = { module = "oro:oro", version.ref = "oro" }
-reqresp-lib = { module = "com.rubensgomes:reqresp-lib", version.ref = "reqresp-lib" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
 springdoc-openapi-starter-webmvc-ui = {module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi"}
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
