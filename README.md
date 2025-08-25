@@ -39,7 +39,7 @@ The project is planned to be built using an automated CircleCI build pipeline.
 ```
 
 ```shell
-./gradlew --info build
+./gradlew --info clean build
 ```
 
 ```shell
