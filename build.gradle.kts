@@ -80,16 +80,15 @@ publishing {
     }
 
     repositories {
-        val repsyUrl: String by project
-        val repsyUsername: String by project
-        val repsyPassword: String by project
+        val mavenRepoUrl: String by project
 
         maven {
+            name = "GitHubPackages"
             project.version = version
-            url = uri(repsyUrl)
+            url = uri(mavenRepoUrl)
             credentials {
-                username = repsyUsername
-                password = repsyPassword
+                username = System.getenv("MAVEN_REPO_USERNAME")
+                password = System.getenv("MAVEN_REPO_PASSWORD")
             }
         }
     }

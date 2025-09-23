@@ -22,36 +22,36 @@ The project is planned to be built using an automated CircleCI build pipeline.
 
 ### Display Java Tools Installed
 
-```shell
+```bash
 ./gradlew -q javaToolchains
 ```
 
 ### Update the gradlew wrapper version
 
-```shell
-./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin
+```bash
+./gradlew wrapper --gradle-version=9.1.0 --distribution-type=bin
 ```
 
 ### Clean, Build, Publish, Release
 
-```shell
+```bash
 ./gradlew --info clean
 ```
 
-```shell
+```bash
 ./gradlew --info clean build
 ```
 
-```shell
+```bash
 git commit -m "updated gradle-catalog" -a
 git push
 ```
 
-```shell
+```bash
 ./gradlew --info release
 ```
 
-```shell
+```bash
 git checkout release
 git pull
 ./gradlew --info publish
@@ -76,7 +76,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             // NOTE: you should use the latest released version from:
-            // https://repsy.io/mvn/rubensgomes/default/com/rubensgomes/catalog/
+            // https://maven.pkg.github.com/rubensgomes/com/rubensgomes/catalog/
             from("com.rubensgomes:catalog:<release-version>")
         }
     }
@@ -85,7 +85,7 @@ dependencyResolutionManagement {
         mavenCentral()
 
         maven {
-            url = uri("https://repo.repsy.io/mvn/rubensgomes/default/")
+            url = uri("https://maven.pkg.github.com/rubensgomes")
         }
     }
 }
