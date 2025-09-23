@@ -1,6 +1,7 @@
 # setup
 
-This file describes high-level setup instructions to create a software development project.
+This file describes high-level setup instructions to create a software 
+development project.
 
 ## GitHub Setup
 
@@ -24,9 +25,8 @@ git remote add origin "https://github.com/rubensgomes/${PROJ_NAME}"
 git push -u origin main
 ```
 
-Then, go to the [repo](https://github.com/rubensgomes/gradle-catalog) and create
-a `release` branch. Click on the `drop-down` to `View all branches` and create
-the `release` branch from main.
+Then, go to the [repo](https://github.com/rubensgomes/gradle-catalog) and create a `release` branch. Click on the 
+`drop-down` to `View all branches` and create the `release` branch from main.
 
 ## Set Up Java
 
@@ -49,22 +49,6 @@ the `release` branch from main.
 
 - [Initializing the Project](https://docs.gradle.org/current/userguide/part1_gradle_init.html)
 
-### Configure ~/.gradle/gradle.properties
 
-   ```text
-   # credentials to deploy builds to Rubens maven repository.
-   repsyUsername=rubensgomes
-   repsyPassword=***
-
-   # as systemProp to make them accessible from settings.gradle.kts
-   systemProp.repsyUsername=rubensgomes
-   systemProp.repsyPassword=***
-
-   # credentials to login to Rubens Docker account
-   dockerUsername=rubensgomes
-   dockerPassword=***
-   ```
-
-## Private Maven `repsy.io` Repo
-
-- Have an account setup at [repsy.io](https://repsy.io/mvn/rubensgomes)
+---
+Author:  [Rubens Gomes](https://rubensgomes.com/)
