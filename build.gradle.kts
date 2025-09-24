@@ -96,12 +96,12 @@ publishing {
     }
 
     repositories {
-        val mavenRepoUrl: String by project
+        val versionCatalogMavenRepoUrl: String by project
 
         maven {
             name = "GitHubPackages"
             project.version = version
-            url = uri(mavenRepoUrl)
+            url = uri(versionCatalogMavenRepoUrl)
             credentials {
                 username = System.getenv("MAVEN_REPO_USERNAME")
                 password = System.getenv("MAVEN_REPO_PASSWORD")
