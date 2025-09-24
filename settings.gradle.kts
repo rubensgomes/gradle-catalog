@@ -18,7 +18,13 @@
 rootProject.name = "gradle-catalog"
 
 pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+
     val releasePluginVersion: String by settings
+
     plugins {
         id("net.researchgate.release") version releasePluginVersion
     }
