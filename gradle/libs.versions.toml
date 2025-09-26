@@ -1,7 +1,7 @@
 [versions]
 bcprov-jdk18on = "1.80"
 commons-configuration2 = "2.12.0"
-commons-validator = "1.9.0"
+commons-validator = "1.10.0"
 device-detector = "1.0.10"
 displaytag = "3.1.0"
 expressly = "6.0.0"
@@ -21,6 +21,7 @@ logback = "1.5.18"
 logbackext-lib = "1.0.7"
 lombok = "8.10.2"
 mockk = "1.14.5"
+ms-base-lib = "0.0.1"
 ms-ex-lib = "0.0.4"
 ms-reqresp-lib = "0.0.10"
 oro = "2.0.8"
@@ -63,6 +64,7 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "lo
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "logbackext-lib" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+ms-base-lib = { module = "com.rubensgomes:ms-base-lib", version.ref = "ms-base-lib" }
 ms-ex-lib = { module = "com.rubensgomes:ms-ex-lib", version.ref = "ms-ex-lib" }
 ms-reqresp-lib = { module = "com.rubensgomes:ms-reqresp-lib", version.ref = "ms-reqresp-lib" }
 oro = { module = "oro:oro", version.ref = "oro" }
