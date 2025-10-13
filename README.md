@@ -48,14 +48,8 @@ git push
 ```
 
 ```bash
+# creates a release and publishes the released artifacts
 ./gradlew --info release
-```
-
-```bash
-git checkout release
-git pull
-./gradlew --info publish
-git checkout main
 ```
 
 ### Usage: Gradle Kotlin DSL
