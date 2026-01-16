@@ -57,5 +57,5 @@ jobs:
       - name: Run Release
         if: steps.check.outputs.skip == 'false'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RUBENS_PAT_TOKEN }}
         run: ./gradlew release --info
