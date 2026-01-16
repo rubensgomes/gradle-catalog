@@ -38,24 +38,13 @@ jobs:
           distribution: 'temurin'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if release commit
-        id: check
-        run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          if echo "$COMMIT_MSG" | grep -iq "\[Gradle Release Plugin\]"; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Configure Git
-        if: steps.check.outputs.skip == 'false'
         run: |
           git config --global user.name "$GITHUB_USER"
           git config --global user.email "$GITHUB_USER_EMAIL"
 
       - name: Run Release
-        if: steps.check.outputs.skip == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.RUBENS_PAT_TOKEN }}
-        run: ./gradlew release --info
+        run: |
+          ./gradlew release --info
