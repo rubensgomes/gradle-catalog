@@ -14,11 +14,9 @@ Maven or Gradle build projects.
 The project is using two branches:
 
 1. **_main_**: which is used as the Trunk-Based Development (TBD) with tagging
-   for new
-   releases.
+   for new releases.
 2. **_release_**: which contains the most recently released code. That is, every
-   time
-   a release is made, this branch is updated.
+   time a release is made, this branch is updated.
 
 ## CICD Automation
 
@@ -26,7 +24,7 @@ The project was initially planned to be built using an automated CircleCI build
 pipeline. Recently, the CI/CD build pipline has been moved to use The GitHub
 Workflow Actions.
 
-The built artifact package is now being deployed to the following GitHub Pakcage:
+The built artifact package is now being deployed to the following GitHub Package:
 
 - https://maven.pkg.github.com/rubensgomes/jvm-libs
 
