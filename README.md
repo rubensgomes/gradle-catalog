@@ -1,22 +1,34 @@
 # gradle-catalog
 
-This project implements a 
+This project implements a
 [Gradle version catalog](https://docs.gradle.org/current/userguide/platforms.html)
-defining plugins and libraries to be consumed by JVM (Java and Kotlin) 
-multi-repo Java/Kotlin Gradle software development projects. 
+defining plugins and libraries to be consumed by Java and Kotlin JVM (Java
+Virtual Machine) Gradle software development projects.
 
-The version catalog is published to a Maven
-[repository](https://repsy.io/mvn/rubensgomes/default/) for consumption by
+The version catalog is published to a
+Maven [repository](https://repsy.io/mvn/rubensgomes/default/) for consumption by
 Maven or Gradle build projects.
+
+## Branching Strategy
+
+The project is using two branches:
+
+1. **_main_**: which is used as the Trunk-Based Development (TBD) with tagging
+   for new
+   releases.
+2. **_release_**: which contains the most recently released code. That is, every
+   time
+   a release is made, this branch is updated.
 
 ## CICD Automation
 
-The project is planned to be built using an automated CircleCI build pipeline.
+The project was initially planned to be built using an automated CircleCI build
+pipeline. Recently, the CI/CD build pipline has been moved to use The GitHub
+Workflow Actions.
 
-### CICD TODO
+The built artifact package is now being deployed to the following GitHub Pakcage:
 
-- Set up account in CircleCI
-- Integrate GitHub with CircleCI builds
+- https://maven.pkg.github.com/rubensgomes/jvm-libs
 
 ## Gradle CLI Commands
 
@@ -29,7 +41,7 @@ The project is planned to be built using an automated CircleCI build pipeline.
 ### Update the gradlew wrapper version
 
 ```bash
-./gradlew wrapper --gradle-version=9.1.0 --distribution-type=bin
+./gradlew wrapper --gradle-version=9.2.1 --distribution-type=bin
 ```
 
 ### Clean, Build, Publish, Release
@@ -43,6 +55,7 @@ The project is planned to be built using an automated CircleCI build pipeline.
 ```
 
 ```bash
+# every push to the main branch should trigger a new release.
 git commit -m "updated gradle-catalog" -a
 git push
 ```
@@ -79,7 +92,7 @@ dependencyResolutionManagement {
         mavenCentral()
 
         maven {
-            url = uri("https://maven.pkg.github.com/rubensgomes")
+            url = uri("https://maven.pkg.github.com/rubensgomes/jvm-libs")
         }
     }
 }

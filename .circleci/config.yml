@@ -1,7 +1,13 @@
-## catalog
+## CircleCI CI/CD "config.yml" workflow file
+##
+## Author: Rubens Gomes
+## Website: https://rubensgomes.com
 ##
 ## Purpose: This file defines the CircleCI configuration file used to automate
-## the build, publication and release of this project.
+## the CI/CD build, publication and release of this project.
+##
+## WARNING: !!!THIS FILE IS NOT BEING USED.  THE CI/CD BUILD HAS BEEN MOVED TO GITHUB WORKFLOW ACTIONS!!!
+
 
 ## CircleCI configuration version
 version: 2.1
@@ -14,9 +20,11 @@ version: 2.1
 executors:
   docker_executor:
     docker:
-      - image: cimg/openjdk:17.0.7
+      - image: cimg/openjdk:25.0.0
 
-################################################################################
+
+######################################
+##########################################
 ######################  commands  ##############################################
 ################################################################################
 
@@ -29,9 +37,9 @@ commands:
       - run:
           name: Displays Environment
           command: |
-            echo "OS and Architecture"
+            printf "OS and Architecture:\n"
             uname -a
-            echo "Environment"
+            printf "\nEnvironment:\n"
             env
 
 ################################################################################
@@ -53,7 +61,7 @@ jobs:
       - run:
           name: Publish SNAPSHOT
           command: |
-            echo "Building and publishing a SNAPSHOT artifact."
+            printf "Building and publishing a SNAPSHOT artifact.\n"
             ./gradlew clean publish --info
 
   ####################  release_job  ###########################################
@@ -85,19 +93,19 @@ jobs:
           command: |
             COMMIT_MSG="\[Gradle Release Plugin\]"
             last_commit_msg="$(git log -1 --pretty=%B)"
-            echo "Parsing last commit msg: ${last_commit_msg}"
+            printf "Parsing last commit msg: %s\n" "${last_commit_msg}"
 
-            if echo "${last_commit_msg}" | grep -iq "${COMMIT_MSG}"; then
-              echo "Last commit was from Gradle Release Plugin: Job being halted."
-              echo "---------- Halting -----------------------------------------"
+            if printf "${last_commit_msg}" | grep -iq "${COMMIT_MSG}"; then
+              printf "Last commit was from Gradle Release Plugin: Job being halted.\n"
+              printf "---------- Halting -----------------------------------------\n"
               circleci-agent step halt
             else
-              echo "Last commit was from PR: Job proceeding to release."
-              echo "---------- Releasing ---------------------------------------"
-              echo "Configuring GIT user.email required for commit pushes."
+              printf "Last commit was from PR: Job proceeding to release.\n"
+              printf "---------- Releasing ---------------------------------------\n"
+              printf "Configuring GIT user.email required for commit pushes.\n"
               git config --global user.email "$CIRCLECI_GIT_USER_EMAIL"
               git config --global user.name "$CIRCLECI_GIT_USER_NAME"
-              echo "Publishing and Releasing RELEASED Artifact."
+              printf "Publishing and Releasing RELEASED Artifact.\n"
               ./gradlew release --info
             fi
 

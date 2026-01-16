@@ -103,8 +103,8 @@ publishing {
             project.version = version
             url = uri(versionCatalogMavenRepoUrl)
             credentials {
-                username = System.getenv("MAVEN_REPO_USERNAME")
-                password = System.getenv("MAVEN_REPO_PASSWORD")
+                username = System.getenv("GITHUB_USER")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
