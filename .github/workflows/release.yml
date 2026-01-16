@@ -15,7 +15,7 @@ on:
 
 env:
   GITHUB_USER: "rubensgomes"
-  GIT_USER_EMAIL: "rubens.s.gomes@gmail.com"
+  GITHUB_USER_EMAIL: "rubens.s.gomes@gmail.com"
 
 jobs:
   release:
@@ -48,8 +48,8 @@ jobs:
       - name: Configure Git
         if: steps.check.outputs.skip == 'false'
         run: |
-          git config --global user.name "$GIT_USER"
-          git config --global user.email "$GIT_USER_EMAIL"
+          git config --global user.name "$GITHUB_USER"
+          git config --global user.email "$GITHUB_USER_EMAIL"
 
       - name: Run Release
         if: steps.check.outputs.skip == 'false'
