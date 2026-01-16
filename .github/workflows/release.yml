@@ -1,0 +1,61 @@
+## GitHub Actions "release.yml" workflow file
+##
+## Author: Rubens Gomes
+## Website: https://rubensgomes.com
+##
+## Purpose: This file defines the GitHub Actions workflow to automate
+## the release of this project when code is pushed to the main branch.
+
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_USER: "rubensgomes"
+  GITHUB_USER_EMAIL: "rubens.s.gomes@gmail.com"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history needed for release plugin
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if release commit
+        id: check
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          if echo "$COMMIT_MSG" | grep -iq "\[Gradle Release Plugin\]"; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure Git
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git config --global user.name "$GITHUB_USER"
+          git config --global user.email "$GITHUB_USER_EMAIL"
+
+      - name: Run Release
+        if: steps.check.outputs.skip == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew release --info
