@@ -57,7 +57,7 @@ The built artifact package is now being deployed to the following GitHub Pakcage
 ```bash
 # every push to the main branch should trigger a new release.
 git commit -m "updated gradle-catalog" -a
-git push
+git pushgit commit -m "updated gradle-catalog" -a
 ```
 
 ```bash
