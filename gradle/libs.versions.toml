@@ -69,6 +69,7 @@ ms-ex-lib = { module = "com.rubensgomes:ms-ex-lib", version.ref = "ms-ex-lib" }
 ms-reqresp-lib = { module = "com.rubensgomes:ms-reqresp-lib", version.ref = "ms-reqresp-lib" }
 oro = { module = "oro:oro", version.ref = "oro" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
+spring-boot-bom = {module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot"}
 springdoc-openapi-starter-webmvc-ui = {module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi"}
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
