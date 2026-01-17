@@ -23,6 +23,7 @@ lombok = "9.2.0"
 mockk = "1.14.5"
 ms-base-lib = "0.0.12"
 ms-ex-lib = "0.0.15"
+ms-fwk-lib = "0.0.4"
 ms-reqresp-lib = "0.0.19"
 oro = "2.0.8"
 release = "3.1.0"
@@ -66,6 +67,7 @@ logbackext-lib = { module = "com.rubensgomes:logbackext-lib", version.ref = "log
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 ms-base-lib = { module = "com.rubensgomes:ms-base-lib", version.ref = "ms-base-lib" }
 ms-ex-lib = { module = "com.rubensgomes:ms-ex-lib", version.ref = "ms-ex-lib" }
+ms-fwk-lib = { module = "com.rubensgomes:ms-fwk-lib", version.ref = "ms-fwk-lib" }
 ms-reqresp-lib = { module = "com.rubensgomes:ms-reqresp-lib", version.ref = "ms-reqresp-lib" }
 oro = { module = "oro:oro", version.ref = "oro" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
