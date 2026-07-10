@@ -39,7 +39,7 @@ The built artifact package is now being deployed to the following GitHub Package
 ### Update the gradlew wrapper version
 
 ```bash
-./gradlew wrapper --gradle-version=9.2.1 --distribution-type=bin
+./gradlew wrapper --gradle-version=9.6.1 --distribution-type=bin
 ```
 
 ### Clean, Build, Publish, Release
@@ -55,7 +55,7 @@ The built artifact package is now being deployed to the following GitHub Package
 ```bash
 # every push to the main branch should trigger a new release.
 git commit -m "updated gradle-catalog" -a
-git pushgit commit -m "updated gradle-catalog" -a
+git push
 ```
 
 ```bash
