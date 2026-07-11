@@ -7,8 +7,6 @@ displaytag = "3.5.3"
 expressly = "6.0.0"
 foojay = "1.0.0"
 hibernate-validator = "9.1.2.Final"
-kotlin = "2.4.0"
-kotlin-logging-jvm = "8.0.4"
 jackson = "2.22.1"
 jakarta-annotation-api = "3.0.0"
 jakarta-validation-api = "3.1.1"
@@ -17,6 +15,8 @@ jjwt = "0.13.0"
 jsonschema2pojo = "1.3.3"
 junit = "6.1.1"
 junit-platform-launcher = "6.1.1"
+kotlin = "2.4.0"
+kotlin-logging-jvm = "8.0.4"
 logback = "1.5.38"
 logbackext-lib = "1.0.7"
 lombok = "9.5.0"
@@ -25,7 +25,7 @@ ms-base-lib = "0.0.13"
 ms-ex-lib = "0.0.17"
 ms-fwk-lib = "0.0.4"
 ms-reqresp-lib = "0.0.20"
-oro = "2.0.8"
+oro = "2.0.8" # EOL — abandoned since 2003, no upgrades available
 release = "3.1.0"
 slf4j-api = "2.0.18"
 sonarqube = "7.3.1.8318"
@@ -35,10 +35,9 @@ spring-cloud-azure = "7.3.0"
 spring-dependency-management = "1.1.7"
 springdoc-openapi = "3.0.3"
 springmockk = "5.0.1"
-struts2 = "7.1.1"
 swagger-annotations = "2.2.52"
-taglibs-datetime = "1.0.1"
-taglibs-string = "1.1.0"
+taglibs-datetime = "1.0.1" # EOL — dormant Jakarta Taglibs
+taglibs-string = "1.1.0"   # EOL — dormant Jakarta Taglibs
 task-tree = "4.0.1"
 
 [libraries]
@@ -72,9 +71,9 @@ ms-fwk-lib = { module = "com.rubensgomes:ms-fwk-lib", version.ref = "ms-fwk-lib"
 ms-reqresp-lib = { module = "com.rubensgomes:ms-reqresp-lib", version.ref = "ms-reqresp-lib" }
 oro = { module = "oro:oro", version.ref = "oro" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-api" }
-spring-boot-bom = {module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot"}
-spring-cloud-azure-bom = {module = "com.azure.spring:spring-cloud-azure-dependencies", version.ref = "spring-cloud-azure"}
-springdoc-openapi-starter-webmvc-ui = {module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi"}
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-cloud-azure-bom = { module = "com.azure.spring:spring-cloud-azure-dependencies", version.ref = "spring-cloud-azure" }
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi" }
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger-annotations" }
 taglibs-datetime = { module = "taglibs:datetime", version.ref = "taglibs-datetime" }
@@ -82,12 +81,13 @@ taglibs-string = { module = "taglibs:string", version.ref = "taglibs-string" }
 
 [bundles]
 jakarta-bean-validator = ["jakarta-validation-api", "expressly", "hibernate-validator"]
+jjwt = ["jjwt-api", "jjwt-impl", "jjwt-jackson"]
 junit-jupiter = ["junit-jupiter-api", "junit-jupiter-engine"]
 kotlin-junit5 = ["mockk", "kotlin-test-junit5", "junit-jupiter-engine"]
 logback = ["logback-classic", "logback-core"]
 
 [plugins]
-fooja = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
+foojay = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
 jsonschema2pojo = { id = "org.jsonschema2pojo", version.ref = "jsonschema2pojo" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
