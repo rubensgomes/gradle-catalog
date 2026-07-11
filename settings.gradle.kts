@@ -11,21 +11,19 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the__LICENSE] [1].
+ * limitations under the License.
  */
 
-// The project name should match the root folder
+// The project name shown by Gradle on the command line. Should match the
+// root folder and the `artifact` value in gradle.properties.
 rootProject.name = "gradle-catalog"
 
+// Repositories used to resolve Gradle plugins declared in `build.gradle.kts`.
+// Plugin versions themselves come from the version catalog
+// (`gradle/libs.versions.toml`) via `alias(libs.plugins.<name>)`.
 pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-    }
-
-    val releasePluginVersion: String by settings
-
-    plugins {
-        id("net.researchgate.release") version releasePluginVersion
     }
 }

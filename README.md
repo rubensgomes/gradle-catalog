@@ -5,84 +5,56 @@ This project implements a
 defining plugins and libraries to be consumed by Java and Kotlin JVM (Java
 Virtual Machine) Gradle software development projects.
 
-The version catalog is published to a
-Maven [repository](https://repsy.io/mvn/rubensgomes/default/) for consumption by
-Maven or Gradle build projects.
+The catalog is published as a Maven artifact
+(`com.rubensgomes:gradle-catalog`) to
+[GitHub Packages](https://github.com/rubensgomes/jvm-libs/packages) for
+consumption by Gradle build projects.
+
+## Requirements
+
+- **JDK 25** (Temurin, matches CI)
+- **Gradle 9.6.1** (via the included wrapper — no local install needed)
 
 ## Branching Strategy
 
-The project is using two branches:
+The project uses two branches:
 
-1. **_main_**: which is used as the Trunk-Based Development (TBD) with tagging
-   for new releases.
-2. **_release_**: which contains the most recently released code. That is, every
-   time a release is made, this branch is updated.
+1. **`main`** — Trunk-Based Development (TBD); tagged for new releases.
+2. **`release`** — contains the most recently released code. Updated on
+   every release by the `net.researchgate.release` plugin.
 
-## CICD Automation
+## CI/CD
 
-The project was initially planned to be built using an automated CircleCI build
-pipeline. Recently, the CI/CD build pipline has been moved to use The GitHub
-Workflow Actions.
+CI/CD is defined in [`.github/workflows/release.yml`](.github/workflows/release.yml).
+Every push to `main` triggers the release workflow, which runs
+`./gradlew release` and publishes the resulting artifact to GitHub Packages:
 
-The built artifact package is now being deployed to the following GitHub Package:
+- Browse published packages: https://github.com/rubensgomes/jvm-libs/packages
+- Maven repository endpoint (for build scripts, not browsers):
+  `https://maven.pkg.github.com/rubensgomes/jvm-libs`
 
-- https://maven.pkg.github.com/rubensgomes/jvm-libs
+## Consuming This Catalog
 
-## Gradle CLI Commands
+### 1. Look up the latest published version
 
-### Display Java Tools Installed
+Browse the published versions on the GitHub Packages page:
 
-```bash
-./gradlew -q javaToolchains
-```
+- https://github.com/rubensgomes/jvm-libs/packages/2811984
 
-### Update the gradlew wrapper version
+Or check the latest git tag on the [`release`](https://github.com/rubensgomes/gradle-catalog/tree/release)
+branch.
 
-```bash
-./gradlew wrapper --gradle-version=9.2.1 --distribution-type=bin
-```
+### 2. Configure `settings.gradle.kts`
 
-### Clean, Build, Publish, Release
-
-```bash
-./gradlew --info clean
-```
-
-```bash
-./gradlew --info clean build
-```
-
-```bash
-# every push to the main branch should trigger a new release.
-git commit -m "updated gradle-catalog" -a
-git pushgit commit -m "updated gradle-catalog" -a
-```
-
-```bash
-# creates a release and publishes the released artifacts
-./gradlew --info release
-```
-
-### Usage: Gradle Kotlin DSL
-
-First, make sure you delete local `gradle/libs.versions.toml`.
-
-### gradle-catalog artifact version
-
-Lookup the latest released version of the gradle `catalog` artifact in the Maven
-[repository](https://repsy.io/mvn/rubensgomes/default/).
-
-### gradle build configurations
-
-- settings.gradle.kts
+> **Important:** GitHub Packages requires authentication even for **reads**.
+> Set `GITHUB_USER` and `GITHUB_TOKEN` (a PAT with the `read:packages` scope)
+> in your environment before running Gradle.
 
 ```kotlin
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            // NOTE: you should use the latest released version from:
-            // https://maven.pkg.github.com/rubensgomes/com/rubensgomes/catalog/
-            from("com.rubensgomes:catalog:<release-version>")
+            from("com.rubensgomes:gradle-catalog:<release-version>")
         }
     }
 
@@ -91,12 +63,20 @@ dependencyResolutionManagement {
 
         maven {
             url = uri("https://maven.pkg.github.com/rubensgomes/jvm-libs")
+            credentials {
+                username = System.getenv("GITHUB_USER")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
 ```
 
-- build.gradle.kts
+If your project already has its own `gradle/libs.versions.toml`, delete it
+before importing this catalog — a project cannot have both a local catalog
+file and an imported catalog under the same name (`libs`).
+
+### 3. Use the catalog in `build.gradle.kts`
 
 ```kotlin
 plugins {
@@ -107,21 +87,47 @@ plugins {
 }
 
 dependencies {
-    // Examples of using a single library in implementation 
+    // Single library
     implementation(libs.commons.configuration2)
     implementation(libs.jakarta.validation.api)
 
-    // Examples of using bundled libraries in implementation 
+    // Bundle of related libraries
     implementation(libs.bundles.jakarta.bean.validator)
 
-    // Examples of using bundled libraries in testImplementation 
+    // Test bundle
     testImplementation(libs.bundles.kotlin.junit5)
 
-    // Examples of using single library in testRuntimeOnly 
+    // Single library on the test runtime classpath
     testRuntimeOnly(libs.junit.platform.launcher)
-
 }
 ```
 
+## Local Development
+
+```bash
+./gradlew -q javaToolchains                                     # List installed JDKs
+./gradlew wrapper --gradle-version=9.6.1 --distribution-type=bin # Update wrapper
+./gradlew clean                                                 # Clean build outputs
+./gradlew clean build                                           # Full local build
+```
+
+## Releasing
+
+The `net.researchgate.release` plugin automates the release lifecycle
+(strip `-SNAPSHOT` → tag → publish → bump to next `-SNAPSHOT`). Releases
+are normally driven by CI on every push to `main`:
+
+```bash
+git commit -am "updated gradle-catalog"
+git push
+```
+
+To run the release manually from a machine with `GITHUB_USER` and
+`GITHUB_TOKEN` (PAT with `write:packages`) set:
+
+```bash
+./gradlew --info release
+```
+
 ---
-Author:  [Rubens Gomes](https://rubensgomes.com/)
+Author: [Rubens Gomes](https://rubensgomes.com/)

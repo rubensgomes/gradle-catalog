@@ -1,63 +1,34 @@
 # gradle-catalog
 
-> A Gradle Version Catalog providing centralized dependency and plugin version management for Java/Kotlin projects.
+> A Gradle Version Catalog providing centralized dependency and plugin
+> version management for Java/Kotlin JVM projects. Published as
+> `com.rubensgomes:gradle-catalog` to GitHub Packages.
 
-## Overview
+This repository contains no application source code — the single
+deliverable is `gradle/libs.versions.toml`.
 
-This project publishes a Gradle version catalog (TOML file) that can be consumed by other Gradle projects to standardize dependency versions. It contains no application source code—only Gradle build configuration.
+## Docs
 
-- **Group ID**: com.rubensgomes
-- **Artifact ID**: gradle-catalog
-- **License**: Apache License 2.0
-- **Repository**: https://github.com/rubensgomes/gradle-catalog
+- [README.md](README.md): User-facing setup, consumer configuration
+  (including required GitHub Packages auth), local development, and
+  release commands.
+- [CLAUDE.md](CLAUDE.md): Agent-facing conventions and guardrails for
+  working in this repo.
 
-## Project Structure
+## Source
 
-- `gradle/libs.versions.toml` - The version catalog (core artifact)
-- `build.gradle.kts` - Build configuration (Kotlin DSL)
-- `settings.gradle.kts` - Settings and plugin management
-- `gradle.properties` - Project metadata and version
+- [gradle/libs.versions.toml](gradle/libs.versions.toml): The catalog —
+  `[versions]`, `[libraries]`, `[bundles]`, `[plugins]`.
+- [build.gradle.kts](build.gradle.kts): Publishing and release plugin wiring.
+- [gradle.properties](gradle.properties): Maven coordinates, POM metadata,
+  Gradle runtime flags.
+- [settings.gradle.kts](settings.gradle.kts): Plugin management.
+- [.github/workflows/release.yml](.github/workflows/release.yml): CI
+  release workflow (push to `main` → tag → publish).
 
-## Build Commands
+## Optional
 
-```bash
-./gradlew clean build      # Clean and build
-./gradlew clean publish    # Publish to Maven repository
-./gradlew release          # Execute release workflow
-```
-
-## Version Catalog Contents
-
-The `libs.versions.toml` catalog defines:
-
-- **[versions]** - Version numbers for dependencies (Kotlin, Spring Boot, Jackson, JUnit, etc.)
-- **[libraries]** - Dependency coordinates using version references
-- **[bundles]** - Grouped libraries (jakarta-bean-validator, junit-jupiter, kotlin-junit5, logback)
-- **[plugins]** - Gradle plugins (Kotlin, Spring Boot, Spotless, Lombok, etc.)
-
-## Usage
-
-Consuming projects reference this catalog in their `settings.gradle.kts`:
-
-```kotlin
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from("com.rubensgomes:gradle-catalog:<version>")
-        }
-    }
-}
-```
-
-Then use in `build.gradle.kts`:
-
-```kotlin
-dependencies {
-    implementation(libs.commons.configuration2)
-    testImplementation(libs.bundles.kotlin.junit5)
-}
-```
-
-## Publishing
-
-Artifacts are published to GitHub Packages Maven repository. Requires `GITHUB_USER` and `GITHUB_TOKEN` environment variables.
+- [Published packages](https://github.com/rubensgomes/jvm-libs/packages/2811984):
+  Browse released versions of this catalog.
+- [Gradle version catalogs userguide](https://docs.gradle.org/current/userguide/platforms.html):
+  Upstream Gradle documentation on version catalogs.

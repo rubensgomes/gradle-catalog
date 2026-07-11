@@ -3,16 +3,40 @@
 ## Author: Rubens Gomes
 ## Website: https://rubensgomes.com
 ##
-## Purpose: This file defines the GitHub Actions workflow to automate
-## the release of this project when code is pushed to the main branch.
+## Purpose: Automates the release of the gradle-catalog artifact whenever
+## code is pushed to the `main` branch. Runs `./gradlew release`, which:
+##   1. Strips "-SNAPSHOT" from the version in gradle.properties
+##   2. Commits + tags the release, pushes the tag to the `release` branch
+##   3. Publishes the artifact to GitHub Packages Maven registry
+##   4. Bumps the version to the next -SNAPSHOT and pushes back to `main`
+##
+## Loop-avoidance note: step 4 pushes back to `main`, which would normally
+## re-trigger this workflow. That does not happen here because the release
+## plugin's own bump commit message ("[Gradle Release Plugin] - new version
+## commit: ...") is authored by the same PAT used below, and the workflow
+## simply runs again and finds nothing to release (version is already a
+## -SNAPSHOT). If you ever see back-to-back release loops, revisit this.
 
 name: Release
 
+# ---------------------------------------------------------------------------
+# Trigger
+# ---------------------------------------------------------------------------
+# Fires on every push to main. Feature branches and PRs do NOT trigger this
+# workflow — releases only happen from mainline history.
 on:
   push:
     branches:
       - main
 
+# ---------------------------------------------------------------------------
+# Workflow-level environment
+# ---------------------------------------------------------------------------
+# GITHUB_USER doubles as:
+#   - The `git config user.name` used when the release plugin creates its
+#     commits/tags (see the "Configure Git" step below).
+#   - The username sent to GitHub Packages when publishing (build.gradle.kts
+#     reads it via System.getenv("GITHUB_USER")).
 env:
   GITHUB_USER: "rubensgomes"
   GITHUB_USER_EMAIL: "rubens.s.gomes@gmail.com"
@@ -20,17 +44,43 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    # -----------------------------------------------------------------------
+    # Permissions for the auto-provisioned GITHUB_TOKEN
+    # -----------------------------------------------------------------------
+    # `contents: write`  — needed so checkout can push commits/tags back to
+    #                      the repo (release plugin pushes to `main` and to
+    #                      the `release` branch).
+    # `packages: write`  — needed to upload the artifact to GitHub Packages.
+    # NOTE: These broaden the default GITHUB_TOKEN. The actual push in the
+    # "Run Release" step uses a separate PAT (see that step for why).
     permissions:
       contents: write
       packages: write
 
     steps:
+      # ---------------------------------------------------------------------
+      # 1. Check out the repository
+      # ---------------------------------------------------------------------
+      # `fetch-depth: 0` grabs FULL history — the release plugin refuses to
+      # run against a shallow clone because it needs to inspect tags and
+      # rewrite/push commits.
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Full history needed for release plugin
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # ---------------------------------------------------------------------
+      # 2. Provision the JDK
+      # ---------------------------------------------------------------------
+      # JDK 25 (Temurin) — must match the toolchain used locally so the
+      # release build/publish behaves identically to `./gradlew release`
+      # run from a developer machine.
+      #
+      # `github-token` is passed to actions/setup-java so its calls to the
+      # GitHub-hosted JDK metadata endpoint are authenticated and don't hit
+      # the anonymous rate limit on busy runners.
       - name: Set up JDK 25
         uses: actions/setup-java@v4
         with:
@@ -38,11 +88,37 @@ jobs:
           distribution: 'temurin'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      # ---------------------------------------------------------------------
+      # 3. Configure git identity
+      # ---------------------------------------------------------------------
+      # Required because the release plugin creates commits (the "pre tag
+      # commit" and the "new version commit" you see in `git log`). Without
+      # a configured identity git would fail with:
+      #   "Please tell me who you are."
       - name: Configure Git
         run: |
           git config --global user.name "$GITHUB_USER"
           git config --global user.email "$GITHUB_USER_EMAIL"
 
+      # ---------------------------------------------------------------------
+      # 4. Run the release
+      # ---------------------------------------------------------------------
+      # Why RUBENS_PAT_TOKEN instead of the default secrets.GITHUB_TOKEN?
+      #   - Pushes made with the auto-provisioned GITHUB_TOKEN do NOT
+      #     trigger downstream workflows (a GitHub Actions safeguard).
+      #     That's often desirable, but here it also means branch-protection
+      #     checks and any consumer notifications tied to the release tag
+      #     may be skipped. A user-owned PAT bypasses this.
+      #   - The PAT also needs `write:packages` scope so the `publish` task
+      #     wired via `afterReleaseBuild` (see build.gradle.kts) can upload
+      #     to GitHub Packages.
+      #
+      # The PAT is exported as `GITHUB_TOKEN` so both git (for pushes) and
+      # the Gradle publish task (`System.getenv("GITHUB_TOKEN")`) pick it up
+      # without any extra plumbing.
+      #
+      # `--info` gives verbose log output — useful for post-mortem when a
+      # release fails. Switch to `--debug` if you need Gradle internals.
       - name: Run Release
         env:
           GITHUB_TOKEN: ${{ secrets.RUBENS_PAT_TOKEN }}

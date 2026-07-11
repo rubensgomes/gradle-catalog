@@ -1,71 +1,41 @@
 # CLAUDE.md
 
-## Project Overview
+Agent-facing notes for working on this repo. For user-facing setup, usage,
+and release commands, see [README.md](README.md).
 
-This is a **Gradle Version Catalog** project that provides centralized
-dependency and plugin version management for Java/Kotlin libraries. It
-contains no application source code—only Gradle build configuration files.
+## What this repo is
 
-## Build Commands
+A Gradle version catalog packaged as a Maven artifact
+(`com.rubensgomes:gradle-catalog`) — no application source code, only build
+configuration. The single deliverable is `gradle/libs.versions.toml`.
 
-```bash
-./gradlew clean build          # Clean and build
-./gradlew clean publish        # Publish to Maven repository
-./gradlew release              # Execute release workflow (main branch only)
-```
+## File layout
 
-## Project Structure
+- `gradle/libs.versions.toml` — **the catalog** (versions, libraries,
+  plugins, bundles). Almost all edits belong here.
+- `build.gradle.kts` — publishing + release wiring.
+- `gradle.properties` — Maven POM metadata + coordinates + release plugin flags.
+- `settings.gradle.kts` — plugin management.
+- `.github/workflows/release.yml` — CI release workflow (push to `main` → release).
+- `.circleci/config.yml` — legacy, no longer used (see `.circleci/NOT_USED.md`).
 
-- `build.gradle.kts` - Main build configuration (Kotlin DSL)
-- `settings.gradle.kts` - Settings and plugin management
-- `gradle.properties` - Project metadata and version
-- `gradle/libs.versions.toml` - **The version catalog** (core of this project)
-- `.circleci/config.yml` - CircleCI CI/CD pipeline configuration (no longer used)
-- `.github/workflows/release.yml` - GitHub Workflow Actions CI/CD pipeline configuration
+## Conventions & guardrails
 
-## Key Configuration
+- **Do not manually edit `version` in `gradle.properties`.** The
+  `net.researchgate.release` plugin owns it (strip `-SNAPSHOT` → tag →
+  publish → bump). Manual edits will collide with the release commit.
+- **Do not commit to the `release` branch.** It is written to only by the
+  release plugin.
+- **`version` must always end in `-SNAPSHOT` on `main`.** The release plugin
+  will not merge to the `release` branch otherwise (upstream bug — see the
+  comment in `gradle.properties`).
+- **When bumping dependency or plugin versions, edit only
+  `gradle/libs.versions.toml`.** Do not add new metadata elsewhere.
+- **Publishing requires `GITHUB_USER` and `GITHUB_TOKEN` env vars** (PAT
+  with `write:packages`). The release CI job supplies these from repo
+  secrets; local runs need them set manually.
 
-- **Group ID**: com.rubensgomes
-- **Artifact ID**: gradle-catalog
-- **Publishing**: GitHub Packages Maven repository
-- **Credentials**: `GITHUB_USER` and `GITHUB_TOKEN` environment
-  variables
+## Common commands
 
-## Version Catalog (libs.versions.toml)
-
-The catalog defines:
-
-- **[versions]** - Version numbers for dependencies
-- **[libraries]** - Dependency coordinates using version references
-- **[plugins]** - Gradle plugin definitions
-- **[bundles]** - Groups of related libraries
-
-## Release Process
-
-The release plugin automates:
-
-1. Removes "-SNAPSHOT" from version
-2. Commits to release branch and tags
-3. Publishes artifact to GitHub Packages
-4. Increments version back to SNAPSHOT on main
-
-## Consuming This Catalog
-
-In dependent projects:
-
-```kotlin
-// settings.gradle.kts
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from("com.rubensgomes:catalog:<version>")
-        }
-    }
-}
-
-// build.gradle.kts
-dependencies {
-    implementation(libs.commons.configuration2)
-    testImplementation(libs.bundles.kotlin.junit5)
-}
-```
+See README.md ("Local Development" and "Releasing" sections) for the
+authoritative command list.
